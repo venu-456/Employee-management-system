@@ -39,6 +39,7 @@ public class EmployeeController {
 		Employee emp =Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));
 		return ResponseEntity.ok(emp);
 	}
+
 	@PutMapping( "{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable int id,@RequestBody Employee emp_details){
 		Employee update_emp=Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));
@@ -48,6 +49,7 @@ public class EmployeeController {
 		Emp_repo.save(update_emp);
 		return ResponseEntity.ok(update_emp);
 	}
+	
 	@DeleteMapping("{id}")
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable int id){
 		Employee emp = Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));

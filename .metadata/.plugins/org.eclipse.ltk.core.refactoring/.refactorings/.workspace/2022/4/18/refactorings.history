@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename Java project &apos;springboot-backend-1&apos; to &apos;crud&apos;&#x0A;- Original element: &apos;springboot-backend-1&apos;&#x0A;- Renamed element: &apos;springboot-backend-1&apos;&#x0A;- Update references to refactored element" description="Rename Java project &apos;springboot-backend-1&apos;" flags="7" id="org.eclipse.jdt.ui.rename.java.project" input="=springboot-backend-1" name="crud" references="true" stamp="1650864972114" version="1.0"/>
+</session>

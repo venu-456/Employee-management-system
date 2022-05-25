@@ -39,17 +39,32 @@ public class EmployeeController {
 		Employee emp =Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));
 		return ResponseEntity.ok(emp);
 	}
-
 	@PutMapping( "{id}")
+	public ResponseEntity<Employee> updateEmployeeprofile(@PathVariable int id,@RequestBody Employee emp_d){
+		Employee update_emp=Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));
+		System.out.println(emp_d+"      "+id);
+		update_emp.setFirstName(emp_d.getFirstName());
+		update_emp.setLastName(emp_d.getLastName());
+		update_emp.setEmailId(emp_d.getEmailId());
+		update_emp.setAbout(emp_d.getAbout());
+		update_emp.setContact(emp_d.getContact());
+		update_emp.setDesignation(emp_d.getDesignation());
+		Emp_repo.save(update_emp);
+		return ResponseEntity.ok(update_emp);
+	}
+	@PutMapping( "byadminOruser/{id}")
 	public ResponseEntity<Employee> updateEmployee(@PathVariable int id,@RequestBody Employee emp_details){
 		Employee update_emp=Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));
 		update_emp.setFirstName(emp_details.getFirstName()); 
 		update_emp.setLastName(emp_details.getLastName());
 		update_emp.setEmailId(emp_details.getEmailId());
+		update_emp.setAdmin(emp_details.isAdmin());
+		update_emp.setCL(emp_details.getCL());
+		update_emp.setEL(emp_details.getEL());
+		update_emp.setPL(emp_details.getPL());
 		Emp_repo.save(update_emp);
 		return ResponseEntity.ok(update_emp);
 	}
-	
 	@DeleteMapping("{id}")
 	public ResponseEntity<Employee> deleteEmployee(@PathVariable int id){
 		Employee emp = Emp_repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not exist with id:"+id));

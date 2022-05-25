@@ -15,6 +15,20 @@ public class Login {
 	private String password;
 	@Column(name = "email_id")
 	private String emailId;
+	@Column(name = "emp_id")
+	private int emp_id;
+	
+	@Override
+	public String toString() {
+		return "Login [id=" + id + ", userName=" + userName + ", password=" + password + ", emailId=" + emailId
+				+ ", emp_id=" + emp_id + "]";
+	}
+	public int getEmp_id() {
+		return emp_id;
+	}
+	public void setEmp_id(int emp_id) {
+		this.emp_id = emp_id;
+	}
 	public int getId() {
 		return id;
 	}
